@@ -8,7 +8,7 @@ import { IonTabs } from '@ionic/angular';
 })
 export class TabsPage implements OnInit {
 
-  @ViewChild('tabs') tabs: IonTabs  //ignore this error, this works
+  @ViewChild('tabs', {static: true}) tabs: IonTabs  //This works without the static: true but throws an error that still compiles, have no idea why....
 
   constructor() { }
 

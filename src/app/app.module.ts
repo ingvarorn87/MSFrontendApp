@@ -12,6 +12,7 @@ import firebaseConfig from './firebase'
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule} from '@angular/fire/auth'
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -19,7 +20,8 @@ import { AngularFireAuthModule} from '@angular/fire/auth'
     IonicModule.forRoot(), 
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    
   ],
   providers: [
     StatusBar,

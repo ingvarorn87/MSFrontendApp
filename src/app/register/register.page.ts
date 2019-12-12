@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth'
 import { auth } from 'firebase/app'
 
-import { AlertController } from '@ionic/angular'
-import { Router } from '@angular/router';
-import {AngularFirestore} from '@angular/fire/firestore'
+import { AngularFirestore } from '@angular/fire/firestore'
 import { UserService } from '../user.service';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,68 +14,55 @@ import { UserService } from '../user.service';
 })
 export class RegisterPage implements OnInit {
 
-  username: string = ""
-  password: string = ""
-  cpassword: string = ""
+	username: string = ""
+	password: string = ""
+	cpassword: string = ""
 
-  constructor(
-    public afAuth: AngularFireAuth,
-    public afstore: AngularFirestore,
-    public alertController: AlertController,
-    public route: Router,
-    public user: UserService
-    ) { }
+	constructor(
+		public afAuth: AngularFireAuth,
+		public afstore: AngularFirestore,
+		public user: UserService,
+		public alertController: AlertController,
+		public router: Router
+		) { }
 
-  ngOnInit() {
-  }
-  async presentAlert(title: string, content: string) {
+	ngOnInit() {
+	}
+
+	async presentAlert(title: string, content: string) {
 		const alert = await this.alertController.create({
 			header: title,
 			message: content,
 			buttons: ['OK']
 		})
 
-    await alert.present()
-  }
+		await alert.present()
+	}
 
-  async register() {
-    const { username, password, cpassword } = this
-    if(password !== cpassword)
-    {
-      this.showAlert("Error!", "Passwords don't match")
-      return console.error("Passwords don*t match")
-    }
-    try {
-      const res = await this.afAuth.auth.createUserWithEmailAndPassword(username, password)
-     
-      this.afstore.doc(`users/${res.user.uid}`).set({
-        username
-      })
+	async register() {
+		const { username, password, cpassword } = this
+		if(password !== cpassword) {
+			return console.error("Passwords don't match")
+		}
 
-      this.user.setUser({
-        username,
-        uid: res.user.uid
-      })
+		try {
+			const res = await this.afAuth.auth.createUserWithEmailAndPassword(username + '@codedamn.com', password)
 
-      this.presentAlert('Success', 'You are registered!')
-			this.route.navigate(['/tabs'])
+			this.afstore.doc(`users/${res.user.uid}`).set({
+				username
+			})
 
-    }catch(error) {
-      console.dir(error)
-      this.showAlert("Error!", error.message)
-    }
-    
+			this.user.setUser({
+				username,
+				uid: res.user.uid
+			})
 
-  }
+			this.presentAlert('Success', 'You are registered!')
+			this.router.navigate(['/tabs'])
 
-  async showAlert(header: string, message: string) {
-    const alert = await this.alertController.create({
-      header,
-      message,
-      buttons: ["Ok"]
-    })
-
-    await alert.present()
-  }
+		} catch(error) {
+			console.dir(error)
+		}
+	}
 
 }

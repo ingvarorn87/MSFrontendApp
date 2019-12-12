@@ -8,12 +8,12 @@ import { IonTabs } from '@ionic/angular';
 })
 export class TabsPage implements OnInit {
 
-  //@ViewChild('tabs') tabs: IonTabs
+  @ViewChild('tabs') tabs: IonTabs  //ignore this error, this works
 
   constructor() { }
 
   ngOnInit() {
-   //this.tabs.select('feed')
+   this.tabs.select('picturefeed')
   }
 
 }

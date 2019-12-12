@@ -9,31 +9,13 @@ const routes: Routes = [
         component: TabsPage,
         children: [ 
           
-            {
-                path: 'videofeed',
-                loadChildren: () => import('../videofeed/videofeed.module').then( m => m.VideofeedPageModule)
-              },
-              {
-                path: 'customize',
-                loadChildren: () => import('../customize/customize.module').then( m => m.CustomizePageModule)
-              },
-              {
-                path: 'picturefeed',
-                loadChildren: () => import('../picturefeed/picturefeed.module').then( m => m.PicturefeedPageModule)
-              },
-              {
-                path: 'profile',
-                loadChildren: () => import('../profile/profile.module').then( m => m.ProfilePageModule)
-              },
-              {
-                path: 'uploader',
-                loadChildren: () => import('../uploader/uploader.module').then( m => m.UploaderPageModule)
-              },
+            {path: 'videofeed', loadChildren: () => import('../videofeed/videofeed.module').then( m => m.VideofeedPageModule)},
+            {path: 'customize',loadChildren: () => import('../customize/customize.module').then( m => m.CustomizePageModule)},
+            {path: 'picturefeed',loadChildren: () => import('../picturefeed/picturefeed.module').then( m => m.PicturefeedPageModule)},
+            {path: 'profile',loadChildren: () => import('../profile/profile.module').then( m => m.ProfilePageModule)},
+            {path: 'uploader',loadChildren: () => import('../uploader/uploader.module').then( m => m.UploaderPageModule)},
         ]
     }
-
-
-   
 ];
 
 

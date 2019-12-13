@@ -22,15 +22,29 @@ export class UploaderPage implements OnInit {
 
   ngOnInit() {
   }
+
   createPost(){
     const image = this.imageURL
     const desc = this.desc
 
-    this.afstore.doc(`users/${this.user.getUID()}`).update({
+    this.afstore.doc(`users/${this.user.getUID()}`)
+    .update({
       posts: firestore.FieldValue.arrayUnion({
         image,
         desc
       })
+
+    })
+    .then(() =>{
+      //update successful(document exists)
+    })
+    .catch((error) =>{
+      // console.log('Error updating user', error); // (document does not exists)
+      this.afstore.doc(`users/${this.user.getUID()}`)
+      .set({
+        image,
+        desc
+      });
     })
   }
 
@@ -46,6 +60,7 @@ export class UploaderPage implements OnInit {
       .subscribe(event => {
       console.log(event)
       this.imageURL = event.file
+      
     })
   }
 }

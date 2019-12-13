@@ -1,9 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>customize</ion-title>
+    <ion-title>Custom Settings</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list>
 
+    <ion-item>
+      <ion-label position="floating">Choose Amount of Pictures Taken per Motion</ion-label>
+      <ion-input type="text" [(ngModel)]="nrOfPicturestaken"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Length of Video</ion-label>
+      <ion-input type="text"[(ngModel)]="videoFeedLenght"></ion-input>
+    </ion-item>
+
+  </ion-list>
 </ion-content>

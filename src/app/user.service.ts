@@ -1,14 +1,16 @@
 import {Injectable} from '@angular/core'
+import {AngularFireAuth} from '@angular/fire/auth'
 
 interface user {
     username: string,
     uid: string
 }
-@Injectable() // makes this service injectible in other components
+
+@Injectable()
 export class UserService{
     private user: user
 
-    constructor() {
+    constructor(private afAuth: AngularFireAuth) {
 
     }
 
@@ -17,6 +19,21 @@ export class UserService{
     }
 
     getUID(){
-        return this.user.uid
+        if(!this.user){
+            if(this.afAuth.auth.currentUser) {
+                const user = this.afAuth.auth.currentUser
+                this.setUser({
+                    username: user.email,
+                    uid: user.uid
+                })
+                return user.uid
+            }else{
+                throw new Error("User Not Logged In")
+            }
+            
+        }else{
+            return this.user.uid
+        }
+        
     }
 }

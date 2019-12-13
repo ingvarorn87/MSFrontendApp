@@ -29,7 +29,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 	  AngularFireAuthModule,
 	  AngularFirestoreModule,
 	  HttpClientModule,
-	  //hareModule
+	  //ShareModule,
+	  //AuthService
 	],
   providers: [
     StatusBar,

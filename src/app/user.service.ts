@@ -4,7 +4,7 @@ interface user {
     username: string,
     uid: string
 }
-@Injectable()
+@Injectable() // makes this service injectible in other components
 export class UserService{
     private user: user
 

@@ -3,6 +3,7 @@ import { HttpClient, JsonpClientBackend } from '@angular/common/http'
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { firestore } from 'firebase/app';
+import { IonTabs, IonButton, IonInput } from '@ionic/angular';
 
 @Component({
   selector: 'app-uploader',
@@ -15,7 +16,7 @@ export class UploaderPage implements OnInit {
   imageURL: string
   desc: string
 
-  @ViewChild('fileButton', {static: true}) fileButton
+  //@ViewChild('fileButton', {static: true}) fileButton: IonInput
 
   constructor(
     public http: HttpClient,
@@ -51,7 +52,7 @@ export class UploaderPage implements OnInit {
   }
 
     uploadFile(){
-      this.fileButton.nativeElement.click()
+      //this.fileButton.ionInput
     }
 
     fileChanged(event) {

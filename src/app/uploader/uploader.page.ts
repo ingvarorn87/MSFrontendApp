@@ -18,6 +18,7 @@ export class UploaderPage implements OnInit {
 
   //@ViewChild('fileButton', {static: true}) fileButton: IonInput
 
+  
   constructor(
     public http: HttpClient,
     public afstore: AngularFirestore,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 @Component({
   selector: 'app-picturefeed',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./picturefeed.page.scss'],
 })
 export class PicturefeedPage implements OnInit {
+  imageResponse: any;
+  options: any;
 
   constructor() { }
 

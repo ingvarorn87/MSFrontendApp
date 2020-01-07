@@ -18,6 +18,11 @@ export class LoginPage implements OnInit {
 
 	ngOnInit() {
 	}
+	async register() {
+	
+		this.router.navigate(['/register'])
+
+	}
 
 	async login() {
 		const { username, password } = this

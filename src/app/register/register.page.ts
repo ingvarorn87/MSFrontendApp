@@ -64,5 +64,10 @@ export class RegisterPage implements OnInit {
 			console.dir(error)
 		}
 	}
+	async login() {
+	
+		this.router.navigate(['/login'])
+
+	}
 
 }
